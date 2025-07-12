@@ -1,0 +1,40 @@
+// app/api/chats/messages/route.js
+import { NextResponse } from 'next/server'
+import dbConnect from '@/lib/db'
+import Message from '@/models/Message'
+
+export const runtime = 'nodejs'
+
+export async function POST(request) {
+  await dbConnect()
+
+  const userId = request.headers.get('x-user-id')
+  if (!userId) {
+    return NextResponse.json({ error: 'Missing user ID' }, { status: 401 })
+  }
+
+  let body
+  try {
+    body = await request.json()
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+  }
+
+  const { chatId, role, content } = body
+  if (!chatId || !role || typeof content !== 'string') {
+    return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
+  }
+
+  try {
+    const saved = await Message.create({
+      chatId,
+      userId,
+      role: role === 'assistant' ? 'ai' : 'user',
+      content,
+    })
+    return NextResponse.json(saved, { status: 201 })
+  } catch (error) {
+    console.error('DB Save Error:', error)
+    return NextResponse.json({ error: 'Database error' }, { status: 500 })
+  }
+}
