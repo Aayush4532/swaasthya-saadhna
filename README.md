@@ -1,4 +1,6 @@
-<img src="./public/saadho.png" alt="Saadhna AI Logo" width="200" />
+<div style="text-align: center;">
+  <img src="/readme.png" alt="Saadhna AI Logo" width="200" style="border-radius: 50%;" />
+</div>
 
 ### ॐ गणेशाय नमः
 
