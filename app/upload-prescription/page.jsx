@@ -32,8 +32,9 @@ export default function PrescriptionUploadPage() {
             method: 'POST',
             body: form,
         })
-
-        const data = await res.json()
+        console.log(form);
+        const data = await res.json();
+        console.log(data);
         setResponse(data.text || 'No response from AI')
         setLoading(false)
     }
@@ -90,7 +91,7 @@ export default function PrescriptionUploadPage() {
                             disabled={!file || loading}
                             className="w-full cursor-pointer bg-gradient-to-r from-green-500 to-emerald-600 py-3 rounded-xl flex justify-center items-center font-semibold hover:scale-[1.02] transition disabled:opacity-50"
                         >
-                            {loading ? <Loader2 className="animate-spin" /> : <Send className="mr-2" />} Thinking
+                            {loading ? <Loader2 className="animate-spin" /> : <Send className="mr-2" />} {loading ? "thinking" : "send"}
                         </button>
                     </div>
                 ) : (
