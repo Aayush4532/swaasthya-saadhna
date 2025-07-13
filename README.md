@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/readme.png" alt="Saadhna AI Logo" width="200" />
+  <img src="./public/readme.png" alt="Saadhna AI Logo" width="200" />
 </p>
 
 
