@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img src="./public/saadho.png"Saadhna AI Logo" width="200"/>
 
-## Getting Started
+### ॐ गणेशाय नमः
 
-First, run the development server:
+**श्रीगणेशाय नमः**  
+वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ  
+निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Saadhna AI and Saadho AI
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Saadhna is a dual-purpose healthcare and wellness AI system built for two distinct yet connected needs:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 1. Doctor Assistant – Saadhna AI
 
-To learn more about Next.js, take a look at the following resources:
+Saadhna AI acts as a thoughtful assistant to doctors, patients, and medical students. It interprets prescriptions, explains medicines, and answers questions with clarity and empathy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Features:
+- Upload your handwritten prescription for instant decoding
+- Explains every medicine, dosage, purpose, and when to take it (before/after meals)
+- Offers combined insights from allopathy and ayurveda
+- Supports follow-up health questions with emotional tone
+- Summarizes the patient’s issue in one line for fast referencing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 2. Mental Wellness Support – Saadho AI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Saadho AI is your personal mental wellness companion. It listens, guides, and supports your inner emotional health without any judgment.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Features:
+- Offers motivation during stress, anxiety, or overthinking
+- Listens and responds in a calm, therapeutic tone
+- Encourages mindfulness, gratitude, and inner healing
+- Remembers emotional context and builds upon user journey
+- Designed to be gentle, helpful, and grounded in compassion
+
+---
+
+## Prescription Upload
+
+- Upload scanned prescriptions (image input)
+- Saadhna reads and breaks it into simple bullet points
+- Accurate decoding of handwriting, timings, and medicines
+- Suggests dietary & lifestyle recommendations when needed
+
+---
+
+## Medicine Finder (Coming Soon)
+
+- Upload image or text of any medicine
+- AI will check availability across known pharmacy APIs
+- Location-aware search (optional)
+- Works for generic and rare medicines alike
+
+---
+
+## Technology Stack
+
+- Frontend: Next.js (Client Components)
+- Backend: Google Gemini API (via `@google/genai`)
+- Auth: Clerk
+- Database: MongoDB (Mongoose)
+- Image Uploads: FormData (with Gemini's vision model)
+- Chat History: Persisted per-user in MongoDB
+- Summary Extraction: Every AI response includes a short summary
+
+---
+
+## Project Structure
