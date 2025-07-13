@@ -15,23 +15,25 @@ export async function POST(request) {
   const file = formData.get('image');
   const chatId = formData.get('chatId');
 
-  if (typeof prompt !== 'string' || !chatId) {
+  if (typeof prompt !== 'string') {
     return NextResponse.json({ error: 'Prompt and chatId are required' }, { status: 400 });
   }
 
   const contents = [];
-  try {
-    const history = await getLast5MessagesByChatId(chatId);
-    for (const msg of history) {
-      if (msg.userMessage) {
-        contents.push({ role: 'user', parts: [{ text: msg.userMessage }] });
+  if (chatId) {
+    try {
+      const history = await getLast5MessagesByChatId(chatId);
+      for (const msg of history) {
+        if (msg.userMessage) {
+          contents.push({ role: 'user', parts: [{ text: msg.userMessage }] });
+        }
+        if (msg.aiReply) {
+          contents.push({ role: 'model', parts: [{ text: msg.aiReply }] });
+        }
       }
-      if (msg.aiReply) {
-        contents.push({ role: 'model', parts: [{ text: msg.aiReply }] });
-      }
+    } catch (err) {
+      console.error('❌ Failed to fetch history:', err);
     }
-  } catch (err) {
-    console.error('❌ Failed to fetch history:', err);
   }
 
   let tempFilePath = null;
