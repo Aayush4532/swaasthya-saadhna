@@ -76,3 +76,66 @@ Saadho AI is your personal mental wellness companion. It listens, guides, and su
 ---
 
 ## Project Structure
+
+/
+├── app/
+│ └── api/
+│ |   ├── chats
+| |          └── [id]
+| |              └── messages
+| |          └── messages
+│ |   └── config
+| |           └── gemini
+| |           └── saadhna
+│ |
+| └── pages
+| └── components
+| └── all routes
+| └── clerk
+|
+|
+├── lib/
+│ └── db.js
+│
+├── models/
+│ └── Message.js
+│ └── Chat.js
+│ └── Summary.js
+│
+├── public/
+│ └── all images
+│
+├── .env.local
+├── package.json & other files
+├── README.md
+
+
+
+---
+
+## Setup
+
+1. Clone the repo
+2. Install dependencies  
+   `npm install`
+3. Setup `.env.local` with:
+MONGODB_URI=your-mongodb-uri
+GEMINI_API_KEY=your-gemini-api-key
+
+4. Run dev server  
+`npm run dev`
+
+---
+
+## Summary Format
+
+- Every AI response ends with a summary in this format:  
+`[[summary: user has diabetes and taking xyz meds]]`
+- Summary is extracted and stored with the chat
+- Helps AI maintain user's long-term context
+
+---
+
+## License
+
+For personal, educational and research use only. Not a substitute for licensed medical advice.
