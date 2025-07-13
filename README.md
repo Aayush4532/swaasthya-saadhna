@@ -75,40 +75,39 @@ Saadho AI is your personal mental wellness companion. It listens, guides, and su
 
 ---
 
-## Project Structure
+```
+Saadhna AI – Project Structure
 
 /
 ├── app/
-│ └── api/
-│ |   ├── chats
-| |          └── [id]
-| |              └── messages
-| |          └── messages
-│ |   └── config
-| |           └── gemini
-| |           └── saadhna
-│ |
-| └── pages
-| └── components
-| └── all routes
-| └── clerk
-|
-|
+│   ├── api/
+│   │   ├── chats/
+│   │   │   ├── [id]/
+│   │   │   │   └── messages/
+│   │   │   └── messages/
+│   │   └── config/
+│   │       ├── gemini/
+│   │       └── saadhna/
+│   ├── pages/
+│   ├── components/
+│   ├── all routes/
+│   └── clerk/
+│
 ├── lib/
-│ └── db.js
+│   └── db.js
 │
 ├── models/
-│ └── Message.js
-│ └── Chat.js
-│ └── Summary.js
+│   ├── Message.js
+│   ├── Chat.js
+│   └── Summary.js
 │
 ├── public/
-│ └── all images
+│   └── all images
 │
 ├── .env.local
-├── package.json & other files
-├── README.md
-
+├── package.json
+└── README.md
+```
 
 
 ---
@@ -119,8 +118,8 @@ Saadho AI is your personal mental wellness companion. It listens, guides, and su
 2. Install dependencies  
    `npm install`
 3. Setup `.env.local` with:
-MONGODB_URI=your-mongodb-uri
-GEMINI_API_KEY=your-gemini-api-key
+`MONGODB_URI=your-mongodb-uri
+GEMINI_API_KEY=your-gemini-api-key`
 
 4. Run dev server  
 `npm run dev`
