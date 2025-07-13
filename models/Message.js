@@ -1,6 +1,7 @@
-import mongoose from 'mongoose'
+// models/Message.js
+import mongoose from 'mongoose';
 
-const messageSchema = new mongoose.Schema({
+const MessageSchema = new mongoose.Schema({
   chatId: {
     type: String,
     ref: 'Chat',
@@ -12,17 +13,17 @@ const messageSchema = new mongoose.Schema({
     required: true,
     index: true,
   },
-  role: {
-    type: String,
-    required: true,
-    enum: ['user', 'ai'],
-  },
-  content: {
+  userMessage: {
     type: String,
     required: true,
   },
-}, { timestamps: true })
+  aiReply: {
+    type: String,
+    required: true,
+  },
+  imageUrl: String, // optional if user sends image
+}, { timestamps: true });
 
-const Message = mongoose.models.Message || mongoose.model('Message', messageSchema)
+const Message = mongoose.models.Message || mongoose.model('Message', MessageSchema);
 
 export default Message;

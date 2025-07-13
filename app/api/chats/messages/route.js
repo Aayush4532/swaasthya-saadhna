@@ -1,7 +1,9 @@
 // app/api/chats/messages/route.js
+
 import { NextResponse } from 'next/server'
 import dbConnect from '@/lib/db'
 import Message from '@/models/Message'
+import Summary from '@/models/Summary'
 
 export const runtime = 'nodejs'
 
@@ -20,18 +22,32 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
   }
 
-  const { chatId, role, content } = body
-  if (!chatId || !role || typeof content !== 'string') {
+  const { chatId, userMessage, aiReply, imageUrl, summary } = body
+
+  // ✅ Validate inputs
+  if (!chatId || !userMessage || !aiReply) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 })
   }
 
   try {
+    // ✅ Save combined message
     const saved = await Message.create({
       chatId,
       userId,
-      role: role === 'assistant' ? 'ai' : 'user',
-      content,
+      userMessage,
+      aiReply,
+      imageUrl,
     })
+
+    // ✅ Upsert summary
+    if (summary) {
+      await Summary.findOneAndUpdate(
+        { chatId, userId },
+        { content: summary },
+        { upsert: true, new: true }
+      )
+    }
+
     return NextResponse.json(saved, { status: 201 })
   } catch (error) {
     console.error('DB Save Error:', error)

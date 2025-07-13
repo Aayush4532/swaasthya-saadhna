@@ -110,10 +110,16 @@ export default function SaadhnaLayout({ children }) {
           }`}
       >
         <div className="flex items-center justify-between mb-6">
-          {!collapsed && <span className="text-lg font-semibold">🧘‍♂️ Saadhna</span>}
+          {!collapsed && <div className="w-10 h-10 rounded-full overflow-hidden">
+            <img
+              src="/saadhna.png"
+              className="w-full h-full object-cover scale-140 translate-y-1"
+            />
+          </div>
+          }
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="text-gray-400 hover:text-white"
+            className="text-gray-400 hover:text-white cursor-pointer"
           >
             <Menu size={20} />
           </button>
@@ -190,8 +196,8 @@ export default function SaadhnaLayout({ children }) {
                 <Link href={`/saadhna/${chat._id}`}>
                   <div
                     className={`truncate rounded px-3 py-2 text-sm cursor-pointer ${chat._id === currentId
-                        ? 'bg-blue-700 font-medium'
-                        : 'hover:bg-gray-700'
+                      ? 'bg-blue-700 font-medium'
+                      : 'hover:bg-gray-700'
                       }`}
                   >
                     {!collapsed ? chat.title : chat.title.charAt(0).toUpperCase()}

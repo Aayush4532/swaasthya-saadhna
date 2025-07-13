@@ -7,7 +7,7 @@ export async function PATCH(request, { params }) {
   await dbConnect();
 
   const userId = request.headers.get('x-user-id');
-  const chatId = params.id;
+  const { chatId } = await params;
 
   if (!userId) {
     return new Response(JSON.stringify({ error: 'User ID required' }), {

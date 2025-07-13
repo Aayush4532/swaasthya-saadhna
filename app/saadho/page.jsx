@@ -150,7 +150,12 @@ export default function SaadhoChatPage() {
     <div className="flex flex-col h-screen bg-black text-gray-100">
       <header className="flex items-center justify-between p-4 bg-gray-900 shadow-lg">
         <div className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-full bg-indigo-700 flex items-center justify-center text-white text-2xl">🕉️</div>
+          <div className="w-10 h-10 rounded-full overflow-hidden">
+            <img
+              src="/saadho.png"
+              className="w-full h-full object-cover scale-180 translate-y-[6px]"
+            />
+          </div>
           <div>
             <h1 className="text-2xl font-bold">Swasthya Saadho AI</h1>
             <p className="text-sm text-gray-400">आपकी मानसिक स्वास्थ्य साथी</p>
@@ -158,11 +163,11 @@ export default function SaadhoChatPage() {
         </div>
         <div className="flex items-center space-x-4">
           <button onClick={clearChat} className="flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg transition">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 17l-4-4m0 0l-4 4m4-4v8"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 17l-4-4m0 0l-4 4m4-4v8" /></svg>
             नया चैट
           </button>
           <button onClick={exportChat} className="flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg transition">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-7-7v14"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-7-7v14" /></svg>
             निर्यात करें
           </button>
           <UserButton afterSignOutUrl="/" />
@@ -199,7 +204,7 @@ export default function SaadhoChatPage() {
         <button onClick={isListening ? stopListening : startListening} disabled={loading} className="p-2 bg-gray-700 rounded-full hover:bg-gray-600 mr-3">
           {isListening
             ? <span className="block w-5 h-5 bg-white rounded-full animate-pulse"></span>
-            : <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-100" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 1v6m0 4v4m0 4v2m-3-2h6"/></svg>
+            : <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-gray-100" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 1v6m0 4v4m0 4v2m-3-2h6" /></svg>
           }
         </button>
         <textarea

@@ -1,28 +1,78 @@
-import { NextResponse } from 'next/server'
-import { GoogleGenAI, createUserContent, createPartFromUri } from '@google/genai'
-import fs from 'fs/promises'
-import path from 'path'
-import os from 'os'
+import { NextResponse } from 'next/server';
+import { GoogleGenAI, createPartFromUri } from '@google/genai';
+import fs from 'fs/promises';
+import path from 'path';
+import os from 'os';
+import { getLast5MessagesByChatId } from '@/lib/db';
 
-export const runtime = 'nodejs'
+export const runtime = 'nodejs';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY })
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export async function POST(request) {
-  const formData = await request.formData()
-  const prompt = formData.get('prompt')
-  const file = formData.get('image')
+  const formData = await request.formData();
+  const prompt = formData.get('prompt');
+  const file = formData.get('image');
+  const chatId = formData.get('chatId');
 
-  if (typeof prompt !== 'string') {
-    return NextResponse.json({ error: 'Prompt is required' }, { status: 400 })
+  if (typeof prompt !== 'string' || !chatId) {
+    return NextResponse.json({ error: 'Prompt and chatId are required' }, { status: 400 });
   }
 
-  let parts = []
-  parts.push({
-    text: `
+  const contents = [];
+  try {
+    const history = await getLast5MessagesByChatId(chatId);
+    for (const msg of history) {
+      if (msg.userMessage) {
+        contents.push({ role: 'user', parts: [{ text: msg.userMessage }] });
+      }
+      if (msg.aiReply) {
+        contents.push({ role: 'model', parts: [{ text: msg.aiReply }] });
+      }
+    }
+  } catch (err) {
+    console.error('❌ Failed to fetch history:', err);
+  }
+
+  let tempFilePath = null;
+  if (file instanceof File) {
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    const tempDir = os.tmpdir();
+    tempFilePath = path.join(tempDir, `${Date.now()}-${file.name}`);
+    await fs.writeFile(tempFilePath, buffer);
+
+    const uploadResult = await ai.files.upload({ file: tempFilePath });
+    contents.push({
+      role: 'user',
+      parts: [
+        createPartFromUri(uploadResult.uri, uploadResult.mimeType),
+        { text: prompt }
+      ]
+    });
+  } else {
+    contents.push({ role: 'user', parts: [{ text: prompt }] });
+  }
+
+  try {
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents,
+      config: {
+        systemInstruction: {
+          role: 'system',
+          parts: [
+            {
+              text: `
 You are Saadhna AI, a thoughtful and friendly AI doctor assistant.
 You have to communicate with regional language of user and always prefer hindi for by default.
 You have to make emotional connect with the user also give your reply in enough required words so that user doesnot get overwhelmed just seeing size of your response else reads with engaging with you.
+At the end of your answer, always include one summary wrapped like this: [[summary: your summary here]].
+This summary should store all important medical and personal information about the user that you've gathered so far — including symptoms, diagnosis, medications, allergies, past conditions, lifestyle hints, and emotional/mental concerns if mentioned.
+Think of it like the user's evolving health snapshot — keep it updated on every interaction.
+Your goal is: anytime in the future, just by reading this summary, you should instantly understand the user's background and provide better, personalized help.
+Never skip or forget to update it.
+
 
 Your role:
 - Interpret the given prescription image carefully and extract full medicine details.
@@ -34,36 +84,23 @@ Your role:
 
 The user may upload a prescription or ask follow-up health questions.
 Answer in easy-to-understand, structured bullet points, without using markdown symbols like **, -, etc.
-`
-  })
+              `.trim()
+            }
+          ]
+        }
+      }
+    });
 
-  let tempFilePath = null
+    const raw = response.text || '';
+    const cleaned = cleanText(raw);
 
-  if (file instanceof File) {
-    const arrayBuffer = await file.arrayBuffer()
-    const buffer = Buffer.from(arrayBuffer)
-    const tempDir = os.tmpdir()
-    tempFilePath = path.join(tempDir, `${Date.now()}-${file.name}`)
-    await fs.writeFile(tempFilePath, buffer)
+    let summary = '';
+    const match = raw.match(/\[\[summary:\s*(.*?)\s*\]\]/i);
+    if (match) summary = match[1].trim();
 
-    const uploadResult = await ai.files.upload({ file: tempFilePath })
-    parts.push(createPartFromUri(uploadResult.uri, uploadResult.mimeType))
-  }
-
-  parts.push({ text: prompt })
-
-  try {
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: [createUserContent(parts)],
-    })
-
-    const raw = response.text || ''
-    const cleaned = cleanText(raw)
-
-    return NextResponse.json({ text: cleaned })
+    return NextResponse.json({ text: cleaned, summary });
   } finally {
-    if (tempFilePath) await fs.unlink(tempFilePath).catch(() => {})
+    if (tempFilePath) await fs.unlink(tempFilePath).catch(() => { });
   }
 }
 
@@ -73,5 +110,6 @@ function cleanText(text) {
     .replace(/^- /gm, '• ')
     .replace(/^\d+\.\s+/gm, (m) => '🔹 ' + m.trim())
     .replace(/\n{2,}/g, '\n\n')
-    .trim()
+    .replace(/\[\[summary:.*?\]\]/gi, '')
+    .trim();
 }
