@@ -21,11 +21,15 @@ Saadhna is a dual-purpose healthcare and wellness AI system built for two distin
 
 ## 1. Doctor Assistant – Saadhna AI
 
-Saadhna AI acts as a thoughtful assistant to doctors, patients, and medical students. It interprets prescriptions, explains medicines, and answers questions with clarity and empathy.
+Saadhna AI acts as a thoughtful assistant to doctors, patients, and medical students.
+It interprets prescriptions, explains medicines, and answers questions with clarity and empathy.
+It is made highly focussed for patients acts as your personal ai doctor via offering aayurvedic and scientific ways to help.
 
 ### Features:
 - Upload your handwritten prescription for instant decoding
+- Upload your handwritten prescription for instant decoding
 - Explains every medicine, dosage, purpose, and when to take it (before/after meals)
+- Gives Scientific and Aayurvedic suggestion of food to take it or not
 - Offers combined insights from allopathy and ayurveda
 - Supports follow-up health questions with emotional tone
 - Summarizes the patient’s issue in one line for fast referencing
