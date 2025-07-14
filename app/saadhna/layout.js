@@ -1,5 +1,4 @@
 'use client';
-
 import { useUser, UserButton } from '@clerk/nextjs';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
@@ -209,7 +208,7 @@ export default function SaadhnaLayout({ children }) {
         </nav>
 
         <div className="mt-4 pt-4 border-t border-gray-700 flex items-center space-x-2">
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
           {!collapsed && (
             <div className="text-sm">
               {user?.firstName || 'User'} {user?.lastName || ''}

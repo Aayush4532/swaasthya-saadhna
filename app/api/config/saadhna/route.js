@@ -4,10 +4,11 @@ import fs from 'fs/promises';
 import path from 'path';
 import os from 'os';
 import { getLast5MessagesByChatId } from '@/lib/db';
-
 export const runtime = 'nodejs';
 
+
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
 
 export async function POST(request) {
   const formData = await request.formData();
@@ -32,7 +33,7 @@ export async function POST(request) {
         }
       }
     } catch (err) {
-      console.error('❌ Failed to fetch history:', err);
+      console.error('Failed to fetch history:', err);
     }
   }
 
@@ -105,6 +106,8 @@ Answer in easy-to-understand, structured bullet points, without using markdown s
     if (tempFilePath) await fs.unlink(tempFilePath).catch(() => { });
   }
 }
+
+
 
 function cleanText(text) {
   return text

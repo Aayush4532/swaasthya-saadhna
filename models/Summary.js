@@ -1,4 +1,3 @@
-// models/Summary.js
 import mongoose from 'mongoose';
 const summarySchema = new mongoose.Schema({
   chatId: {

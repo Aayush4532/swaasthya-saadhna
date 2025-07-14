@@ -1,4 +1,3 @@
-// app/api/chats/[chatId]/messages/route.js
 import { NextResponse } from 'next/server'
 import dbConnect from '@/lib/db'
 import Message from '@/models/Message'

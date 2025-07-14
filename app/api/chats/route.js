@@ -1,9 +1,8 @@
 import dbConnect from '@/lib/db';
 import Chat from '@/models/Chat';
-
 export const runtime = 'nodejs';
 
-// Create New Chat
+
 export async function POST(request) {
   await dbConnect();
 
@@ -33,7 +32,9 @@ export async function POST(request) {
   }
 }
 
-// Get all chats for user
+
+
+
 export async function GET(request) {
   await dbConnect();
 

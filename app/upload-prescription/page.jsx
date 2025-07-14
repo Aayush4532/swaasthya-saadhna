@@ -1,15 +1,14 @@
 'use client'
-
 import { useState, useRef } from 'react';
 import { Loader2, ImagePlus, Send } from 'lucide-react';
 import Header from '../components/Header';
 
 export default function PrescriptionUploadPage() {
-    const [file, setFile] = useState(null)
-    const [previewUrl, setPreviewUrl] = useState('')
-    const [response, setResponse] = useState('')
-    const [loading, setLoading] = useState(false)
-    const fileInputRef = useRef(null)
+    const [file, setFile] = useState(null);
+    const [previewUrl, setPreviewUrl] = useState('');
+    const [response, setResponse] = useState('');
+    const [loading, setLoading] = useState(false);
+    const fileInputRef = useRef(null);
 
     const handleFileChange = (e) => {
         const img = e.target.files[0]
@@ -48,7 +47,7 @@ export default function PrescriptionUploadPage() {
     return (
         <>
             <Header />
-            <div className="min-h-screen bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#111115] text-white flex items-center justify-center p-6">
+            <div className="min-h-screen bg-gradient-to-br bg-[#0d0d0f] text-white flex items-center justify-center p-6">
                 {!response ? (
                     <div className="w-full max-w-md bg-[#1e1e1e] rounded-2xl p-6 shadow-lg space-y-6">
                         <h1 className="text-xl font-semibold text-center text-gray-100">Upload Prescription</h1>

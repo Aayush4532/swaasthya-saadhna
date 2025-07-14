@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Swasthya Saadhna",
-  description: "swasthya saadhna",
+  description: "It is your's personal ai doctor, it will help you explaining your doctor's prescription, medicine taking time and gives you suggestion from scientific and aayurvedic combined knowledge",
 };
 
 export default function RootLayout({ children }) {

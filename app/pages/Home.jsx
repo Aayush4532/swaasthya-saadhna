@@ -7,16 +7,13 @@ export default function Home() {
     <div className="relative max-w-screen min-h-screen overflow-auto bg-black">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800 animate-pulse-slow opacity-80" />
       <div className="relative z-10 flex flex-col items-center justify-between w-full px-8">
-        {/* Header */}
         <header className="w-full max-w-7xl flex items-center justify-between py-4 mb-6 border-b border-gray-700">
-          {/* Logo / Title */}
           <img
             src="/logo.png"
             alt="logo"
             className="rounded-md w-[150px] h-[75px] object-cover"
           />
 
-          {/* Header Links + UserButton */}
           <div className="flex items-center space-x-8">
             <nav className="flex items-center space-x-6">
               <Link
@@ -42,23 +39,21 @@ export default function Home() {
               </Link>
             </nav>
 
-            {/* Custom UserButton positioned to the far right */}
             <div className="ml-8">
               <UserButton />
             </div>
           </div>
         </header>
 
-        {/* Hero Section */}
         <section className="flex flex-col lg:flex-row flex-1 w-full max-w-7xl space-y-12 lg:space-y-0 lg:space-x-12">
-          {/* Left Column: Headline & Search */}
+
           <div className="flex flex-col justify-center flex-1 space-y-6">
             <p className="text-2xl text-gray-300">Namaste,</p>
             <h2 className="text-white text-5xl lg:text-6xl font-black leading-tight drop-shadow-xl">
               Your AI Health Companion
             </h2>
 
-            {/* Search Input */}
+
             <div className="relative w-full max-w-xl">
               <input
                 type="text"
@@ -93,14 +88,14 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Right Column: AI Avatar & Upload */}
+
           <div className="flex flex-col items-center justify-center flex-1 space-y-8">
-            {/* AI Avatar */}
+
             <div className="relative w-56 h-56 lg:w-64 lg:h-64 bg-gray-800 rounded-md overflow-hidden shadow-[0_0_34px_rgba(20,184,166,0.5)] border border-teal-500">
               <img src="/girl.png" className="object-cover h-full w-full" />
             </div>
 
-            {/* Upload Prescription Card */}
+
             <Link
               href="/upload-prescription"
               className="
@@ -115,7 +110,7 @@ export default function Home() {
               "
             >
               <div className="w-12 h-12 lg:w-14 lg:h-14 bg-teal-400 rounded-md flex items-center justify-center text-gray-900">
-                {/* Upload Icon */}
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6 lg:w-8 lg:h-8"
@@ -143,9 +138,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Middle Grid: Core Cards */}
+
         <section className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 my-12">
-          {/* Medicine Availability Card */}
+
           <Link
             href="/medicineAvailability"
             className="
@@ -155,7 +150,7 @@ export default function Home() {
             "
           >
             <div className="w-12 h-12 lg:w-14 lg:h-14 bg-teal-400 rounded-md flex items-center justify-center mb-4">
-              {/* Medicine Icon */}
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6 lg:w-8 lg:h-8 text-gray-900"
@@ -192,7 +187,7 @@ export default function Home() {
             </button>
           </Link>
 
-          {/* Health Tracker Card */}
+
           <Link
             href="/swasthya"
             className="
@@ -202,7 +197,7 @@ export default function Home() {
             "
           >
             <div className="w-12 h-12 lg:w-14 lg:h-14 bg-teal-400 rounded-md flex items-center justify-center mb-4">
-              {/* Tracker Icon */}
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6 lg:w-8 lg:h-8 text-gray-900"
@@ -240,7 +235,7 @@ export default function Home() {
           </Link>
         </section>
 
-        {/* Saadhna AI Assistant Card (Full Width) */}
+
         <section className="w-full max-w-7xl mb-12">
           <Link
             href="/saadhna"
@@ -251,7 +246,7 @@ export default function Home() {
             "
           >
             <div className="w-12 h-12 lg:w-14 lg:h-14 bg-teal-400 rounded-md flex items-center justify-center mb-4">
-              {/* Assistant Icon */}
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6 lg:w-8 lg:h-8 text-gray-900"
@@ -290,16 +285,16 @@ export default function Home() {
           </Link>
         </section>
 
-        {/* What You’ll Love (Condensed Features Section) */}
+
         <section className="w-full max-w-7xl mb-12">
           <h3 className="text-white text-3xl lg:text-4xl font-extrabold mb-6 drop-shadow-lg text-center">
             What You’ll Love
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
-            {/* Feature 1 */}
+
             <div className="flex flex-col items-center bg-gray-800 bg-opacity-70 border border-gray-700 rounded-md p-6 drop-shadow-md">
               <div className="w-12 h-12 lg:w-14 lg:h-14 bg-teal-400 rounded-md flex items-center justify-center mb-4">
-                {/* Symptom Checker Icon */}
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6 lg:w-8 lg:h-8 text-gray-900"
@@ -324,10 +319,10 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Feature 2 */}
+
             <div className="flex flex-col items-center bg-gray-800 bg-opacity-70 border border-gray-700 rounded-md p-6 drop-shadow-md">
               <div className="w-12 h-12 lg:w-14 lg:h-14 bg-teal-400 rounded-md flex items-center justify-center mb-4">
-                {/* Prescription OCR Icon */}
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6 lg:w-8 lg:h-8 text-gray-900"
@@ -352,10 +347,10 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Feature 3 */}
+
             <div className="flex flex-col items-center bg-gray-800 bg-opacity-70 border border-gray-700 rounded-md p-6 drop-shadow-md">
               <div className="w-12 h-12 lg:w-14 lg:h-14 bg-teal-400 rounded-md flex items-center justify-center mb-4">
-                {/* AI Health Chatbot Icon */}
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6 lg:w-8 lg:h-8 text-gray-900"
@@ -380,10 +375,10 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Feature 4 */}
+
             <div className="flex flex-col items-center bg-gray-800 bg-opacity-70 border border-gray-700 rounded-md p-6 drop-shadow-md">
               <div className="w-12 h-12 lg:w-14 lg:h-14 bg-teal-400 rounded-md flex items-center justify-center mb-4">
-                {/* Price Comparison Icon */}
+
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-6 h-6 lg:w-8 lg:h-8 text-gray-900"
@@ -410,7 +405,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Footer */}
         <footer className="w-full max-w-7xl text-center py-6 border-t border-gray-700 mt-8">
           <div className="flex flex-col lg:flex-row items-center justify-between">
             <p className="text-gray-400 text-sm lg:text-base mb-4 lg:mb-0">

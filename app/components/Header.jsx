@@ -7,7 +7,6 @@ const Header = () => {
     <header className="w-full px-4 md:px-8 py-3 border-b border-neutral-800 bg-[#0d0d0f] shadow-sm">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         
-        {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
           <img
             src="/logo.png"
@@ -16,7 +15,6 @@ const Header = () => {
           />
         </Link>
 
-        {/* Nav + User */}
         <div className="flex items-center space-x-6">
           <nav className="hidden md:flex items-center space-x-6">
             {[
@@ -34,8 +32,6 @@ const Header = () => {
               </Link>
             ))}
           </nav>
-
-          {/* User */}
           <UserButton />
         </div>
       </div>

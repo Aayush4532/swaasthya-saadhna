@@ -42,22 +42,20 @@ body::-webkit-scrollbar-track,
 }
 
 
-/* Scrollbar ka thumb (handle) */
 body::-webkit-scrollbar-thumb,
 .your-scrollable-div::-webkit-scrollbar-thumb {
-  background-color: #05090e; /* Dark navy blue aur black ke beech ka colour */
-  border-radius: 10px; /* Thoda golai dene ke liye */
-  border: 1px solid #000000; /* Thumb ke around halka border, background colour ka */
+  background-color: #05090e;
+  border-radius: 10px;
+  border: 1px solid #000000;
 }
 
-/* Jab mouse thumb par ho (hover) */
 body::-webkit-scrollbar-thumb:hover,
 .your-scrollable-div::-webkit-scrollbar-thumb:hover {
-  background-color: #2F4F6F; /* Hover par thoda sa aur light shade */
+  background-color: #2F4F6F; 
 }
 
 
-
+/* second choice of scrollbar */
 
 
 

@@ -1,5 +1,4 @@
 'use client';
-
 import { useUser } from '@clerk/nextjs';
 import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'next/navigation';
@@ -19,6 +18,8 @@ export default function ChatPage() {
   const bottomRef = useRef(null);
   const fileInputRef = useRef(null);
 
+
+
   useEffect(() => {
     if (!chatId || !userId) return;
 
@@ -30,7 +31,6 @@ export default function ChatPage() {
         });
         const data = await res.json();
         
-        // Transform API data to match our message structure
         const transformedMessages = data.flatMap(msg => {
           const baseId = msg._id || msg.id || `msg-${Date.now()}`;
           const userMessage = {
@@ -89,7 +89,7 @@ export default function ChatPage() {
 
     const tempAiMsg = {
       role: 'assistant',
-      content: '💭 Saadhna AI soch rahi hai...',
+      content: 'साधना सोच रही है...',
       isTemp: true,
       timestamp: new Date().toISOString(),
       uniqueId: `temp-${Date.now()}`
@@ -112,7 +112,7 @@ export default function ChatPage() {
       const aiReply = aiData.text;
       const summary = aiData.summary || '';
 
-      // Update messages with permanent AI response
+      
       setMessages((prev) => [
         ...prev.filter((msg) => !msg.isTemp),
         {
@@ -123,7 +123,7 @@ export default function ChatPage() {
         },
       ]);
 
-      // Save to database
+      
       await Promise.all([
         fetch('/api/chats/messages', {
           method: 'POST',
@@ -150,12 +150,12 @@ export default function ChatPage() {
       ]);
     } catch (err) {
       console.error('Error:', err);
-      // Replace temp message with error
+      
       setMessages((prev) => [
         ...prev.filter((msg) => !msg.isTemp),
         {
           role: 'assistant',
-          content: '❌ Error from Saadhna AI',
+          content: 'Error from Saadhna AI',
           timestamp: new Date().toISOString(),
           uniqueId: `error-${Date.now()}`
         },
@@ -168,7 +168,6 @@ export default function ChatPage() {
     }
   };
 
-  // Safe date formatting function
   const formatTime = (dateString) => {
     try {
       const date = new Date(dateString);

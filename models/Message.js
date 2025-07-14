@@ -21,7 +21,7 @@ const MessageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  imageUrl: String, // optional if user sends image
+  imageUrl: String, // i am never going to use it.
 }, { timestamps: true });
 
 const Message = mongoose.models.Message || mongoose.model('Message', MessageSchema);
