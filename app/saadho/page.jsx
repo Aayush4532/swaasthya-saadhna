@@ -174,7 +174,7 @@ export default function SaadhoChatPage() {
         </div>
       </header>
 
-      <main className="flex-1 overflow-y-auto p-4 bg-gray-800 space-y-4">
+      <main className="flex-1 your-scrollable-div overflow-y-auto p-4 bg-gray-800 space-y-4">
         {messages.map((msg, i) => {
           const user = msg.from === "user";
           const typing = msg.from === "typing";

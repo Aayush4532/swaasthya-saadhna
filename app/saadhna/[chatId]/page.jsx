@@ -179,7 +179,7 @@ export default function ChatPage() {
 
   return (
     <div className="flex flex-col h-full bg-black text-white">
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 your-scrollable-div relative">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 your-scrollable-div2 relative">
         {isFetching ? (
           <div className="flex justify-center items-center h-full">
             <Loader2 className="animate-spin" size={24} />
