@@ -92,35 +92,74 @@ Saadho AI is your personal mental wellness companion. It listens, guides, and su
 ```
 Saadhna AI – Project Structure
 
-/
-├── app/
-│   ├── api/
-│   │   ├── chats/
-│   │   │   ├── [id]/
-│   │   │   │   └── messages/
-│   │   │   └── messages/
-│   │   └── config/
-│   │       ├── gemini/
-│   │       └── saadhna/
-│   ├── pages/
-│   ├── components/
-│   ├── all routes/
-│   └── clerk/
-│
-├── lib/
-│   └── db.js
-│
-├── models/
-│   ├── Message.js
-│   ├── Chat.js
-│   └── Summary.js
-│
-├── public/
-│   └── all images
-│
-├── .env.local
+├── .gitignore
+├── README.md
+├── app
+    ├── api
+    │   ├── chats
+    │   │   ├── [chatId]
+    │   │   │   ├── messages
+    │   │   │   │   └── route.js
+    │   │   │   ├── route.js
+    │   │   │   └── summary
+    │   │   │   │   └── route.js
+    │   │   ├── messages
+    │   │   │   └── route.js
+    │   │   └── route.js
+    │   └── config
+    │   │   ├── gemini
+    │   │       └── route.js
+    │   │   └── saadhna
+    │   │       └── route.js
+    ├── components
+    │   └── Header.jsx
+    ├── documentation
+    │   └── page.jsx
+    ├── favicon.ico
+    ├── globals.css
+    ├── layout.js
+    ├── medicineAvailability
+    │   └── page.jsx
+    ├── page.js
+    ├── pages
+    │   └── Home.jsx
+    ├── saadhna
+    │   ├── [chatId]
+    │   │   └── page.jsx
+    │   ├── layout.js
+    │   └── page.jsx
+    ├── saadho
+    │   └── page.jsx
+    ├── sign-in
+    │   └── [[...sign-in]]
+    │   │   └── page.jsx
+    ├── sign-up
+    │   └── [[...sign-up]]
+    │   │   └── page.jsx
+    └── upload-prescription
+    │   └── page.jsx
+├── eslint.config.mjs
+├── jsconfig.json
+├── lib
+    └── db.js
+├── middleware.js
+├── models
+    ├── Chat.js
+    ├── Message.js
+    └── Summary.js
+├── next.config.mjs
+├── package-lock.json
 ├── package.json
-└── README.md
+├── postcss.config.mjs
+├── public
+    ├── flag.png
+    ├── girl.png
+    ├── logo.png
+    ├── picture.png
+    ├── readme.png
+    ├── saadhna.png
+    └── saadho.png
+└── tsconfig.json
 ```
 
 
